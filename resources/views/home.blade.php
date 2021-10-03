@@ -22,5 +22,5 @@
                     <tr><th>Email</th><th>:</th><td>{{ $user->email}}</td></tr>
                     <tr><th>Created</th><th>:</th><td>{{ $user->created_at}}</td></tr>
                     </table>
-                    <a class="btn btn-primary" href="{{ url('/pendaftaran') }}">LANJUT KE HALAMAN DASHBOARD</a>
-                      
+                    <a class="btn btn-primary" href="{{ route('pendaftaran.index') }}">LANJUT KE HALAMAN DASHBOARD</a>
+

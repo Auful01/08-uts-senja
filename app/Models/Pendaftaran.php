@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pendaftaran extends Model
 {
     use HasFactory;
-    protected $table = "pendaftaran"; // Eloquent akan membuat model mahasiswa menyimpan record di tabel mahasiswas
+    protected $table = "pendaftaran_siswa"; // Eloquent akan membuat model mahasiswa menyimpan record di tabel mahasiswas
     public $timestamps = false;
     protected $primaryKey = 'nim'; // Memanggil isi DB Dengan primarykey
     /**
@@ -25,4 +25,3 @@ class Pendaftaran extends Model
         'no_telp',
     ];
 };
-

@@ -1,5 +1,7 @@
 <?php
 
+// namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\SearchController;
@@ -27,6 +29,6 @@ use Illuminate\Http\Request;
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/pendaftaran', PendaftaranController::class);
+Route::resource('pendaftaran', PendaftaranController::class);
 // Route::get('/pendaftaran', [PendaftaranController::class, 'index']);
 Route::get('/search', [SearchController::class, 'cari']);

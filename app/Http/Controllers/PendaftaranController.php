@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 
@@ -14,14 +15,12 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
-        
-            //fungsi eloquent menampilkan data menggunakan pagination
-            $pendaftaran = Pendaftaran::all(); // Mengambil semua isi tabel
-            $pendaftaran = Pendaftaran::orderBy('nim', 'asc')->paginate(4);
-            return view('pendaftaran.index', compact('pendaftaran'))
+
+        //fungsi eloquent menampilkan data menggunakan pagination
+        $pendaftaran = Pendaftaran::all(); // Mengambil semua isi tabel
+        $pendaftaran = Pendaftaran::orderBy('nim', 'asc')->paginate(4);
+        return view('pendaftaran.index', compact('pendaftaran'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
-            
-    
     }
 
     /**
@@ -50,16 +49,16 @@ class PendaftaranController extends Controller
             'tanggal_lahir' => 'required',
             'alamat' => 'required',
             'no_telp' => 'required',
-            ]);
+        ]);
 
-            //fungsi eloq untuk nambah data
-            Pendaftaran::create($request->all());
-            
-    
-            //jika data berhasil ditambahkan, akan kembali ke halaman utama
-            return redirect()->route('pendaftaran.index')->with('success', 'Data Berhasil Ditambahkan');
-        }
-    
+        //fungsi eloq untuk nambah data
+        Pendaftaran::create($request->all());
+
+
+        //jika data berhasil ditambahkan, akan kembali ke halaman utama
+        return redirect()->route('pendaftaran.index')->with('success', 'Data Berhasil Ditambahkan');
+    }
+
 
 
     /**
@@ -83,10 +82,10 @@ class PendaftaranController extends Controller
      */
     public function edit($nim)
     {
-         //menampilkan detail data dengan menemukan berdasarkan no resi untuk diedit
-         $pendaftaran = Pendaftaran::find($nim);
+        //menampilkan detail data dengan menemukan berdasarkan no resi untuk diedit
+        $pendaftaran = Pendaftaran::find($nim);
         //  return view('users.edit', compact('shipping'));
-         return view('pendaftaran.edit',['pendaftaran' => $pendaftaran]);
+        return view('pendaftaran.edit', ['pendaftaran' => $pendaftaran]);
     }
 
     /**
@@ -98,22 +97,22 @@ class PendaftaranController extends Controller
      */
     public function update(Request $request, $nim)
     {
-         //melakukan validasi data
-         $request->validate([
+        //melakukan validasi data
+        $request->validate([
             'nim' => 'required',
             'nama_mahasiswa' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'alamat' => 'required',
             'no_telp' => 'required',
-            ]);
+        ]);
 
-            //fungsi eloq untuk update inputan
-            Pendaftaran::find($nim)->update($request->all());
+        //fungsi eloq untuk update inputan
+        Pendaftaran::find($nim)->update($request->all());
 
-            
-            //jika data berhasil diupdate, akan kembali ke halaman utama
-            return redirect()->route('pendaftaran.index')->with('success', 'Data Berhasil Diupdate');
+
+        //jika data berhasil diupdate, akan kembali ke halaman utama
+        return redirect()->route('pendaftaran.index')->with('success', 'Data Berhasil Diupdate');
     }
 
     /**
@@ -124,8 +123,8 @@ class PendaftaranController extends Controller
      */
     public function destroy($nim)
     {
-         //fungsi eloquent untuk menghapus data
-         Pendaftaran::find($nim)->delete();
-         return redirect()->route('pendaftaran.index')-> with('success', 'Data Berhasil Dihapus');
+        //fungsi eloquent untuk menghapus data
+        Pendaftaran::find($nim)->delete();
+        return redirect()->route('pendaftaran.index')->with('success', 'Data Berhasil Dihapus');
     }
 }

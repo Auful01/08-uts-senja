@@ -13,11 +13,11 @@
             </div>
             <div class="float-right my-2">
                 <form action="{{ url('/search') }}" method="GET">
-                <input type="text" class="form-control mr-2" name="keyword" placeholder="Search" id="keyword">   
+                <input type="text" class="form-control mr-2" name="keyword" placeholder="Search" id="keyword">
                 <input type="submit" value="Cari">
-            </form> 
+            </form>
             </div>
-   
+
             </div>
         </div>
     </div>
@@ -51,15 +51,16 @@
             <form action="{{ route('pendaftaran.destroy',$shp->nim ) }}" method="POST">
                     <a class="btn btninfo" href="{{ route('pendaftaran.show',$shp->nim) }}">Show</a>
                     <a class="btn btnprimary" href="{{ route('pendaftaran.edit',$shp->nim) }}">Edit</a>
-                    
+
                     @csrf
                     @method('DELETE')
-                    
+
                     <button type="submit" class="btn btn-danger">Delete</button>
             </form>
             </td>
         </tr>
         @endforeach
     </table>
-   {{ $shipping->links('pagination::bootstrap-4')}}
+   {{-- {{ $shipping->links('pagination::bootstrap-4')}}  --}}
+   {{-- IKI TAK KOMEN GESS, NKO jajalen --}}
 @endsection
